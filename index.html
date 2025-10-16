@@ -1,0 +1,1054 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dinesh & xyz - शुभ विवाह</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #d4af37;
+            --primary-dark: #b8941f;
+            --secondary: #ec4899;
+            --dark: #5d4e37;
+            --light: #faf0e6;
+            --gray: #8b7355;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+            --bg-dark: #f5e6d3;
+            --text-color: #5d4e37;
+            --light-text: #666;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans Devanagari', 'Georgia', serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+            background-color: #fff;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        nav.scrolled {
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 600;
+            transition: var(--transition);
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        nav a:hover {
+            color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(45deg, var(--primary), #f4e4bc);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('https://images.unsplash.com/photo-1511795409834-ef04bbd61622?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.1) 0%, transparent 70%);
+            animation: float 8s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-20px) rotate(5deg);
+            }
+        }
+
+        .hero-content {
+            text-align: center;
+            z-index: 2;
+            animation: fadeInUp 2s ease-out;
+            background: rgba(255, 255, 255, 0.85);
+            padding: 3rem;
+            border-radius: 20px;
+            max-width: 800px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            margin: 0 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero-content {
+                padding: 2rem;
+                margin: 0 1rem;
+                max-width: 100%;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero h2 {
+                font-size: 1.2rem;
+            }
+            
+            .wedding-date {
+                font-size: 1.5rem;
+            }
+            
+            #wedding-timer {
+                flex-wrap: wrap;
+                gap: 0.8rem;
+                font-size: 1rem;
+            }
+            
+            #wedding-timer span {
+                padding: 0.4rem 0.8rem;
+                min-width: 50px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-content {
+                padding: 1.5rem;
+                margin: 0 0.5rem;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero h2 {
+                font-size: 1rem;
+            }
+            
+            .wedding-date {
+                font-size: 1.2rem;
+            }
+            
+            #wedding-timer {
+                font-size: 0.9rem;
+                gap: 0.5rem;
+            }
+            
+            #wedding-timer span {
+                padding: 0.3rem 0.6rem;
+                min-width: 45px;
+            }
+            
+            .btn {
+                padding: 0.6rem 1.5rem;
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 360px) {
+            #wedding-timer { 
+                align-items: center;
+            }
+            
+            #wedding-timer span {
+                display: block;
+                margin-bottom: 0.3rem;
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            color: var(--dark);
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .bal-agrah {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem auto;
+            max-width: 600px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            font-style: italic;
+            color: var(--light-text);
+            border-left: 5px solid var(--primary);
+        }
+
+        .hero h2 {
+            font-size: 1.5rem;
+            color: var(--gray);
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+
+        .wedding-date {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .hearts {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .heart {
+            position: absolute;
+            color: var(--primary);
+            font-size: 20px;
+            animation: heartFloat 6s ease-in-out infinite;
+            opacity: 0.7;
+        }
+
+        @keyframes heartFloat {
+            0%, 100% {
+                transform: translateY(0px) scale(1);
+                opacity: 0.7;
+            }
+            50% {
+                transform: translateY(-30px) scale(1.1);
+                opacity: 1;
+            }
+        }
+
+        /* Section Styles */
+        section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3rem;
+            color: var(--dark);
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(45deg, var(--primary), #f4e4bc);
+            border-radius: 2px;
+        }
+
+        /* Our Story */
+        .story-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            margin-top: 2rem;
+        }
+
+        .story-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--light-text);
+        }
+
+        .story-image {
+            width: 100%;
+            height: 400px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .story-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .story-image:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .story-image:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Wedding Details */
+        .details-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .detail-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+            border: 1px solid var(--bg-dark);
+            overflow: hidden;
+        }
+
+        .detail-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+        }
+
+        .detail-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .detail-card i {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .detail-card h3 {
+            font-size: 1.8rem;
+            font-family: 'Cormorant Garamond', serif;
+            color: var(--text-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .detail-card p {
+            color: var(--light-text);
+            font-size: 1rem;
+            margin: 0;
+        }
+
+        /* Programs Section */
+        #programs {
+            background-color: var(--bg-dark);
+            border-radius: 20px;
+            padding: 4rem 2rem;
+            margin-bottom: 4rem;
+        }
+
+        /* Gallery Section */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            height: 250px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-item::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, transparent 60%, rgba(0, 0, 0, 0.7));
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover::after {
+            opacity: 1;
+        }
+
+        /* Wishes Section */
+        #wishes {
+            background: linear-gradient(135deg, #f5e6d3 0%, #faf0e6 100%);
+            border-radius: 20px;
+            padding: 4rem 2rem;
+        }
+
+        .wishes-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #e6d7c3;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-family: inherit;
+            transition: var(--transition);
+            background: white;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .wishes-display {
+            margin-top: 3rem;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .wish-item {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            margin-bottom: 1rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            animation: slideIn 0.5s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .wish-item h4 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .wish-item p {
+            color: var(--light-text);
+            margin: 0;
+        }
+
+        .wish-item .wish-date {
+            font-size: 0.8rem;
+            color: var(--gray);
+            margin-top: 0.5rem;
+        }
+
+        /* Map Section */
+        #map {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+        }
+
+        .map-container {
+            height: 400px;
+            border-radius: 15px;
+            overflow: hidden;
+            background: #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gray);
+        }
+
+        .venue-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .venue-card {
+            background: var(--bg-dark);
+            padding: 1.5rem;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .venue-card h4 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .venue-card p {
+            color: var(--light-text);
+            margin: 0;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, var(--dark) 0%, #3e3328 100%);
+            color: white;
+            text-align: center;
+            padding: 4rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1469371670807-013ccf25f16a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80') center/cover no-repeat;
+            opacity: 0.1;
+            z-index: 0;
+        }
+
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        /* Button styling */
+        .btn {
+            display: inline-block;
+            background: linear-gradient(45deg, var(--primary), var(--primary-dark));
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 1.5rem;
+            transition: var(--transition);
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.4);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            nav ul {
+                flex-wrap: wrap;
+                gap: 1rem;
+                padding: 0 1rem;
+            }
+
+            .story-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            section {
+                padding: 3rem 1rem;
+            }
+
+            .section-title {
+                font-size: 2.2rem;
+            }
+        }
+
+        /* Scroll animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Timer styling */
+        #wedding-timer {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        #wedding-timer span {
+            background: rgba(212, 175, 55, 0.2);
+            padding: 0.5rem 1rem;
+            border-radius: 10px;
+            font-weight: bold;
+            min-width: 60px;
+            display: inline-block;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <ul>
+            <li><a href="#home">मुख्य</a></li>
+            <li><a href="#story">हमारी कहानी</a></li>
+            <li><a href="#details">विवाह विवरण</a></li>
+            <li><a href="#programs">मांगलिक कार्यक्रम</a></li>
+            <li><a href="#gallery">गैलरी</a></li> 
+            <li><a href="#map">स्थान</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hearts">
+            <span class="heart" style="top: 20%; left: 10%;">♥</span>
+            <span class="heart" style="top: 60%; right: 15%; animation-delay: 2s;">♥</span>
+            <span class="heart" style="top: 30%; right: 25%; animation-delay: 4s;">♥</span>
+            <span class="heart" style="bottom: 40%; left: 20%; animation-delay: 1s;">♥</span>
+            <span class="heart" style="bottom: 20%; right: 30%; animation-delay: 3s;">♥</span>
+        </div>
+        <div class="hero-content">
+            <div style="font-size: 2rem; color: var(--primary); margin-bottom: 1rem;">॥ शुभविवाह ॥</div>
+            <h1>दिनेश & xyz</h1>
+            <h2>परमपिता परमेश्वर की असीम अनुकम्पा से</h2>
+            <p class="wedding-date">03-04 दिसंबर 2025</p>
+            <div id="wedding-timer" style="font-size: 1.2rem; color: var(--primary); margin-top: 1rem;">
+                <span id="days">00</span> दिन
+                <span id="hours">00</span> घंटे
+                <span id="minutes">00</span> मिनट
+                <span id="seconds">00</span> सेकंड
+            </div>
+            <div style="font-size: 1.2rem; color: var(--gray); margin-top: 1rem;">
+                बुधवार एवं गुरुवार
+            </div>
+            <a href="#rsvp" class="btn">आरएसवीपी</a>
+        </div>
+    </section>
+
+    <!-- Our Story Section -->
+    <section id="story" class="fade-in">
+        <h2 class="section-title">हमारी कहानी</h2>
+        <div class="story-content">
+            <div class="detail-card">
+                <p><strong>वर:</strong> चि० दिनेश कुमार</p>
+                <p>सुपौत्र - स्व. अच्छेलाल कन्नौजिया<br>
+                    सुपुत्र - श्री नन्हेलाल कन्नौजिया<br>
+                    ग्राम व पोस्ट - महरुआ कसडा<br>
+                    जिला - अम्बेडकर नगर</p>
+
+                <p style="margin-top: 2rem;"><strong>वधू:</strong> आयु ० xyz</p>
+                <p>सुपुत्री - स्व. xyz कन्नौजिया<br>
+                    भाई - श्री xyz कन्नौजिया एवं xyz कन्नौजिया<br>
+                    ग्राम - बस्ती<br>
+                    पोस्ट - बस्ती, जिला - अयोध्या</p>
+            </div>
+            <div class="story-image">
+                <img src="https://images.unsplash.com/photo-1517649763962-0c623066013b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80" alt="Wedding Couple">
+            </div>
+        </div>
+        <div style="text-align: center; margin-top: 3rem; font-size: 1.1rem; color: var(--gray); font-style: italic;">
+            "के सुमनाम्मूत्य सूत्र बंधन के उपलक्ष्य में आप सादर आमंत्रित हैं"
+        </div>
+    </section>
+
+    <!-- Wedding Details Section -->
+    <section id="details" class="fade-in">
+        <h2 class="section-title">विवाह विवरण</h2>
+        <div class="details-grid">
+            <div class="detail-card">
+                <i class="fa-solid fa-heart"></i>
+                <h3>शुभ विवाह</h3>
+                <p><strong>दिनांक:</strong> 03 दिसंबर 2025</p>
+                <p><strong>दिन:</strong> बुधवार</p>
+                <p><strong>स्थान:</strong> ग्राम-बस्ती<br>पोस्ट-बस्ती, जिला-अयोध्या</p>
+            </div>
+            <div class="detail-card">
+                <i class="fa-solid fa-champagne-glasses"></i>
+                <h3>वधू आगमन एवं प्रीतिभोज</h3>
+                <p><strong>दिनांक:</strong> 04 दिसंबर 2025</p>
+                <p><strong>दिन:</strong> गुरुवार</p>
+                <p><strong>स्थान:</strong> ग्राम व पोस्ट-महरुआ कसांडा<br>जिला-अम्बेडकर नगर</p>
+            </div>
+            <div class="detail-card">
+                <i class="fa-solid fa-people-group"></i>
+                <h3>बारात प्रस्थान</h3>
+                <p><strong>समय:</strong> सायं 2:00 बजे</p>
+                <p><strong>दिनांक:</strong> 3 दिसंबर 2025 (गुरुवार)</p>
+                <p>निवास स्थान से वधू के घर के लिए</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- मांगलिक कार्यक्रम Section -->
+    <section id="programs" class="fade-in">
+        <h2 class="section-title">।। श्री गणेशाय नमः ।। 🙏</h2>
+        <div style="text-align: center; margin-bottom: 2rem; font-style: italic; color: var(--light-text); font-size: 1.1rem;">
+            विघ्न हरण मंगल करण, श्री गणपति महाराज। प्रथम निमंत्रण आपको, पूरन कीजै काज ।।
+        </div>
+        <h3 style="text-align: center; font-size: 2rem; color: var(--primary); margin-bottom: 2rem;">मांगलिक कार्यक्रम 🎉</h3>
+
+        <div class="details-grid" style="max-width: 900px; margin: 0 auto;">
+            <div class="detail-card">
+                <i class="fa-solid fa-hand-holding-heart"></i>
+                <h3>तेल पूजन</h3>
+                <p><strong>दिनांक:</strong> 2 दिसंबर 2025</p>
+                <p><strong>दिन:</strong> शुक्रवार</p>
+            </div>
+            <div class="detail-card">
+                <i class="fa-solid fa-praying-hands"></i>
+                <h3>मातृ पूजन</h3>
+                <p><strong>दिनांक:</strong> 01 दिसंबर 2025</p>
+                <p><strong>दिन:</strong> शनिवार</p>
+            </div>
+            <div class="detail-card">
+                <i class="fa-solid fa-book-open"></i>
+                <h3>अखण्ड रामायण</h3>
+                <p><strong>दिनांक:</strong> 03 दिसंबर 2025 (रविवार)</p>
+                <p>से 04 दिसंबर 2025 (सोमवार) प्रातः तक</p>
+            </div>
+        </div>
+
+        <div class="bal-agrah">
+            <p style="font-size: 1rem; line-height: 1.8;">
+                <strong>बाल आग्रह:</strong> ठण्डी का मौसम है, ठंडी से न घबराना, मेले चाचू की शादी में जलूल-जलूल आना
+                जी....
+                <br><strong>- वेदिका (त्रिशा)</strong>
+            </p>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="fade-in">
+        <h2 class="section-title">गैलरी</h2>
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="https://plus.unsplash.com/premium_photo-1664790560155-eeef67a1e77c?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTI5fHx3ZWRkaW5nfGVufDB8fDB8fHww" alt="Wedding Moment 1">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Wedding Moment 2">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1519741497674-611481863552?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Wedding Moment 3">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1537633552985-df8429e8048b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Wedding Moment 4">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Wedding Moment 5">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1464375117522-1311d6a5b81f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Wedding Moment 6">
+            </div>
+        </div>
+    </section>
+
+   
+
+    <!-- Map Section -->
+    <section id="map" class="fade-in">
+        <h2 class="section-title">स्थान</h2>
+        <div class="map-container">
+            <div style="text-align: center;">
+                <i class="fas fa-map-marked-alt" style="font-size: 3rem; color: var(--primary); margin-bottom: 1rem;"></i>
+                <p>यहां इंटरैक्टिव मैप दिखाई देगा</p>
+            </div>
+        </div>
+        <div class="venue-info">
+            <div class="venue-card">
+                <i class="fas fa-church" style="font-size: 2rem; color: var(--primary); margin-bottom: 0.5rem;"></i>
+                <h4>विवाह स्थल</h4>
+                <p>ग्राम-बस्ती<br>पोस्ट-बस्ती, जिला-अयोध्या</p>
+            </div>
+            <div class="venue-card">
+                <i class="fas fa-home" style="font-size: 2rem; color: var(--primary); margin-bottom: 0.5rem;"></i>
+                <h4>प्रीतिभोज स्थल</h4>
+                <p>ग्राम व पोस्ट-महरुआ कसांडा<br>जिला-अम्बेडकर नगर</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <h3>दर्शनाभिलाषी</h3>
+            <p style="line-height: 1.8;">
+                अच्छेलाल कन्नौजिया, नन्हेलाल<br>
+                कन्हाई लाल, अवधेश, दुर्गेश<br>
+                एवं समस्त कन्नौजिया परिवार व मित्रगण
+            </p>
+
+            <div style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid rgba(212, 175, 55, 0.3);">
+                <h3 style="margin-bottom: 1rem;">संपर्क</h3>
+                <p><strong>विनीत:</strong> नन्हेलाल कन्नौजिया</p>
+                <p><strong>मोबाइल:</strong> 9967454474, 9768328975</p>
+                <p style="margin-top: 1rem; font-size: 0.9rem; opacity: 0.8;">
+                    ग्राम व पोस्ट-महरुआ कसांडा, जिला-अम्बेडकर नगर
+                </p>
+            </div>
+
+            <p style="margin-top: 2rem; opacity: 0.9; font-style: italic;">
+                कृपया शुभ मांगलिक अवसर पर पधार कर नवयुगल को अपने आशीर्वाद से अभिसिंचित कर, हमें अनुग्रहीत करें।
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Wedding countdown timer
+        const weddingDate = new Date("December 3, 2025 18:00:00").getTime();
+
+        function updateTimer() {
+            const now = new Date().getTime();
+            const distance = weddingDate - now;
+
+            if (distance < 0) {
+                document.getElementById("wedding-timer").innerHTML = "शुभ विवाह सम्पन्न हो चुका है!";
+                clearInterval(timerInterval);
+                return;
+            }
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("days").innerText = days.toString().padStart(2, '0');
+            document.getElementById("hours").innerText = hours.toString().padStart(2, '0');
+            document.getElementById("minutes").innerText = minutes.toString().padStart(2, '0');
+            document.getElementById("seconds").innerText = seconds.toString().padStart(2, '0');
+        }
+
+        const timerInterval = setInterval(updateTimer, 1000);
+        updateTimer();
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', function () {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Fade in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function (entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add some dynamic hearts
+        function createRandomHeart() {
+            const heart = document.createElement('span');
+            heart.className = 'heart';
+            heart.innerHTML = '♥';
+            heart.style.left = Math.random() * 100 + '%';
+            heart.style.top = Math.random() * 100 + '%';
+            heart.style.animationDelay = Math.random() * 6 + 's';
+            heart.style.fontSize = (Math.random() * 10 + 15) + 'px';
+
+            document.querySelector('.hearts').appendChild(heart);
+
+            // Remove heart after animation
+            setTimeout(() => {
+                if (heart.parentNode) {
+                    heart.parentNode.removeChild(heart);
+                }
+            }, 6000);
+        }
+
+        // Create hearts periodically
+        setInterval(createRandomHeart, 3000);
+
+        // Wishes form submission
+        document.getElementById('wishForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('wishName').value;
+            const message = document.getElementById('wishMessage').value;
+            
+            if (name && message) {
+                const wishesDisplay = document.getElementById('wishesDisplay');
+                const wishItem = document.createElement('div');
+                wishItem.className = 'wish-item';
+                
+                const now = new Date();
+                const timeString = 'अभी अभी';
+                
+                wishItem.innerHTML = `
+                    <h4>${name}</h4>
+                    <p>${message}</p>
+                    <div class="wish-date">${timeString}</div>
+                `;
+                
+                wishesDisplay.insertBefore(wishItem, wishesDisplay.firstChild);
+                
+                // Reset form
+                document.getElementById('wishName').value = '';
+                document.getElementById('wishMessage').value = '';
+                
+                // Show success message
+                const successMsg = document.createElement('div');
+                successMsg.style.cssText = `
+                    position: fixed;
+                    top: 20px;
+                    right: 20px;
+                    background: var(--primary);
+                    color: white;
+                    padding: 1rem 2rem;
+                    border-radius: 10px;
+                    box-shadow: var(--shadow);
+                    z-index: 9999;
+                    animation: slideIn 0.5s ease-out;
+                `;
+                successMsg.textContent = 'शुभकामना सफलतापूर्वक भेजी गई!';
+                document.body.appendChild(successMsg);
+                
+                setTimeout(() => {
+                    successMsg.remove();
+                }, 3000);
+            }
+        });
+    </script>
+</body>
+</html>
